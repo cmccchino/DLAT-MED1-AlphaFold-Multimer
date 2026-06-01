@@ -21,13 +21,13 @@ Russo et al. (2024, *Molecular Cell*) demonstrated by co-immunoprecipitation fro
 | 1 | Monomer | MED1 domain (72–520) | 0.148 | Mixed / polar |
 | 2 | Monomer | LXXLL (590–730) | 0.344 | Hydrophobic |
 | 3 | **Trimer** | **LXXLL (590–730)** | **0.505** | **Hydrophobic** |
-| 4 | Trimer | TED (72–520) | 0.412 | Polar / H-bond |
+| 4 | Trimer | MED1 domain (72–520) | 0.412 | Polar / H-bond |
 
 **Four consistent findings across all runs:**
 
 1. **The acetyltransferase catalytic domain (mature residues 334–561) is the sole predicted MED1 contact surface** — contributing 74–100% of DLAT interface residues in every run
 2. **The PSBD (mature residues 270–307) is completely free in all predictions** — zero contacts in every model, suggesting compatibility with intact PDC assembly during Mediator engagement
-3. **Trimer modeling dramatically improves interaction confidence** — ipTM increases from 0.148→0.412 (TED) and 0.344→0.505 (LXXLL), demonstrating that quaternary assembly creates emergent interaction surfaces absent in the isolated monomer
+3. **Trimer modeling dramatically improves interaction confidence** — ipTM increases from 0.148→0.412 (MED1 domain) and 0.344→0.505 (LXXLL), demonstrating that quaternary assembly creates emergent interaction surfaces absent in the isolated monomer
 4. **The MED1 LXXLL coactivator recruitment region is the preferred contact** — with both LXXLL motifs engaged simultaneously by two adjacent DLAT subunits in the trimer run, consistent with canonical coactivator LXXLL motif engagement
 
 ---
@@ -49,10 +49,10 @@ DLAT-MED1-AlphaFold-Multimer/
 │   └── run4_dlat_trimer_med1_ted_rank001.pdb
 │
 ├── figures/
-│   ├── run1_pae.png                     # PAE plot — DLAT monomer + MED1 TED
+│   ├── run1_pae.png                     # PAE plot — DLAT monomer + MED1 domain
 │   ├── run2_pae.png                     # PAE plot — DLAT monomer + MED1 LXXLL
 │   ├── run3_pae.png                     # PAE plot — DLAT trimer + MED1 LXXLL
-│   ├── run4_pae.png                     # PAE plot — DLAT trimer + MED1 TED
+│   ├── run4_pae.png                     # PAE plot — DLAT trimer + MED1 domain
 │
 ├── sequences/
 │   └── input_sequences.txt              # FASTA sequences used for ColabFold input
@@ -142,18 +142,6 @@ PAE (Predicted Aligned Error) plots from all four runs. The inter-chain quadrant
 | Run 3 — DLAT trimer + MED1 LXXLL | Run 4 — DLAT trimer + MED1 domain |
 |---|---|
 | ![Run 3 PAE](figures/run3_pae.png) | ![Run 4 PAE](figures/run4_pae.png) |
-
----
-
-## Domain architectures
-
-**DLAT mature sequence domain architecture:**
-
-![DLAT domain architecture](figures/dlat_domain_architecture.png)
-
-**MED1 domain architecture and modeled fragments:**
-
-![MED1 domain architecture](figures/med1_domain_architecture.png)
 
 ---
 
