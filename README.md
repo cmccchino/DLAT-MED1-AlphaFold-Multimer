@@ -9,7 +9,7 @@ A self-initiated computational structural biology project investigating the mole
 Russo et al. (2024, *Molecular Cell*) demonstrated by co-immunoprecipitation from RAW264.7 macrophage lysates that DLAT — the E2 acetyltransferase subunit of the pyruvate dehydrogenase complex (PDC) — associates with the Mediator complex in vivo during macrophage activation. This finding establishes that the PDC and Mediator physically associate in a physiologically relevant context, providing a potential structural basis for the local delivery of acetyl-CoA to Mediator-bound chromatin regulatory regions. However, the molecular basis of this interaction — which subunit surfaces mediate the contact and through which region of MED1 — remains unknown.
 
 **This project uses AlphaFold-Multimer to computationally investigate the predicted structural basis of this interaction**, testing two hypotheses:
-1. Does DLAT interact with MED1 through its structured domain region (TED domains, residues 72–520)?
+1. Does DLAT interact with MED1 through its structured domain region (MED1 domain, residues 72–520)?
 2. Does DLAT interact with MED1 through its LXXLL coactivator recruitment region (residues 590–730)?
 
 ---
@@ -18,7 +18,7 @@ Russo et al. (2024, *Molecular Cell*) demonstrated by co-immunoprecipitation fro
 
 | Run | DLAT form | MED1 fragment | ipTM | Interface character |
 |-----|-----------|---------------|------|---------------------|
-| 1 | Monomer | TED (72–520) | 0.148 | Mixed / polar |
+| 1 | Monomer | MED1 domain (72–520) | 0.148 | Mixed / polar |
 | 2 | Monomer | LXXLL (590–730) | 0.344 | Hydrophobic |
 | 3 | **Trimer** | **LXXLL (590–730)** | **0.505** | **Hydrophobic** |
 | 4 | Trimer | TED (72–520) | 0.412 | Polar / H-bond |
@@ -53,8 +53,6 @@ DLAT-MED1-AlphaFold-Multimer/
 │   ├── run2_pae.png                     # PAE plot — DLAT monomer + MED1 LXXLL
 │   ├── run3_pae.png                     # PAE plot — DLAT trimer + MED1 LXXLL
 │   ├── run4_pae.png                     # PAE plot — DLAT trimer + MED1 TED
-│   ├── dlat_domain_architecture.png     # DLAT domain schematic
-│   └── med1_domain_architecture.png     # MED1 domain schematic
 │
 ├── sequences/
 │   └── input_sequences.txt              # FASTA sequences used for ColabFold input
@@ -78,7 +76,7 @@ DLAT-MED1-AlphaFold-Multimer/
 **MED1** (Mediator subunit 1)
 - UniProt: [Q15648](https://www.uniprot.org/uniprotkb/Q15648)
 - Full length (1582 aa) not modeled due to GPU memory constraints
-- **TED fragment**: residues 72–520 (449 aa) — covers InterPro structured domains (60–427) and extended structured region (428–520)
+- **MED1 domain fragment**: residues 72–520 (449 aa) — covers InterPro structured domains (60–427) and extended structured region (428–520)
 - **LXXLL fragment**: residues 590–730 (141 aa) — covers LXXLL motif 1 (604–608, LTSLL), LXXLL motif 2 (645–649, LMNLL), and experimentally confirmed interaction regions for PPARGC1A/THRA (622–701) and GATA1 (681–715)
 
 ### AlphaFold-Multimer modeling
@@ -101,7 +99,7 @@ All analysis performed from the unrelaxed rank 1 PDB files using the custom Pyth
 ### Sequence numbering
 
 - DLAT residue numbers are in **mature sequence numbering** (residue 1 = UniProt P10515 residue 87)
-- MED1 TED fragment: PDB residue + 71 = UniProt Q15648 full sequence number
+- MED1 domain fragment: PDB residue + 71 = UniProt Q15648 full sequence number
 - MED1 LXXLL fragment: PDB residue + 589 = UniProt Q15648 full sequence number
 
 ---
@@ -112,7 +110,7 @@ No dependencies beyond Python 3 standard library.
 
 **Single file mode:**
 ```bash
-# Run 1 — DLAT monomer + MED1 TED
+# Run 1 — DLAT monomer + MED1 domain
 python scripts/dlat_med1_interface_analysis.py pdb/run1_dlat_monomer_med1_ted_rank001.pdb A B 71 "Run 1"
 
 # Run 2 — DLAT monomer + MED1 LXXLL
@@ -121,7 +119,7 @@ python scripts/dlat_med1_interface_analysis.py pdb/run2_dlat_monomer_med1_lxxll_
 # Run 3 — DLAT trimer + MED1 LXXLL
 python scripts/dlat_med1_interface_analysis.py pdb/run3_dlat_trimer_med1_lxxll_rank001.pdb A,B,C D 589 "Run 3"
 
-# Run 4 — DLAT trimer + MED1 TED
+# Run 4 — DLAT trimer + MED1 domain
 python scripts/dlat_med1_interface_analysis.py pdb/run4_dlat_trimer_med1_ted_rank001.pdb A,B,C D 71 "Run 4"
 ```
 
@@ -137,11 +135,11 @@ python scripts/dlat_med1_interface_analysis.py
 
 PAE (Predicted Aligned Error) plots from all four runs. The inter-chain quadrants (off-diagonal blocks) indicate confidence in relative chain positioning — green = confident, red = uncertain.
 
-| Run 1 — DLAT monomer + MED1 TED | Run 2 — DLAT monomer + MED1 LXXLL |
+| Run 1 — DLAT monomer + MED1 domain | Run 2 — DLAT monomer + MED1 LXXLL |
 |---|---|
 | ![Run 1 PAE](figures/run1_pae.png) | ![Run 2 PAE](figures/run2_pae.png) |
 
-| Run 3 — DLAT trimer + MED1 LXXLL | Run 4 — DLAT trimer + MED1 TED |
+| Run 3 — DLAT trimer + MED1 LXXLL | Run 4 — DLAT trimer + MED1 domain |
 |---|---|
 | ![Run 3 PAE](figures/run3_pae.png) | ![Run 4 PAE](figures/run4_pae.png) |
 
