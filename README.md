@@ -6,7 +6,7 @@ A self-initiated computational structural biology project investigating the mole
 
 ## Biological motivation
 
-Russo et al. (2024, *Molecular Cell*) demonstrated by co-immunoprecipitation from RAW264.7 macrophage lysates that DLAT — the E2 acetyltransferase subunit of the pyruvate dehydrogenase complex (PDC) — associates with the Mediator complex in vivo during macrophage activation. This finding establishes that the PDC and Mediator physically associate in a physiologically relevant context, providing a potential structural basis for the local delivery of acetyl-CoA to Mediator-bound chromatin regulatory regions. However, the molecular basis of this interaction — which subunit surfaces mediate the contact and through which region of MED1 — remains unknown.
+Russo et al. (2024, *Molecular Cell*) demonstrated by co-immunoprecipitation from RAW264.7 macrophage lysates that DLAT, the E2 acetyltransferase subunit of the pyruvate dehydrogenase complex (PDH), associates with the Mediator complex in vivo during macrophage activation. This finding establishes that the PDC and Mediator physically associate in a physiologically relevant context, providing a potential structural basis for the local delivery of acetyl-CoA to Mediator-bound chromatin regulatory regions. However, the molecular basis of this interaction, which subunit surfaces mediate the contact and through which region of MED1, remains unknown.
 
 **This project uses AlphaFold-Multimer to computationally investigate the predicted structural basis of this interaction**, testing two hypotheses:
 1. Does DLAT interact with MED1 through its structured domain region (MED1 domain, residues 72–520)?
@@ -26,7 +26,7 @@ Russo et al. (2024, *Molecular Cell*) demonstrated by co-immunoprecipitation fro
 **Four consistent findings across all runs:**
 
 1. **The acetyltransferase catalytic domain (mature residues 334–561) is the sole predicted MED1 contact surface** — contributing 74–100% of DLAT interface residues in every run
-2. **The PSBD (mature residues 270–307) is completely free in all predictions** — zero contacts in every model, suggesting compatibility with intact PDC assembly during Mediator engagement
+2. **The Peripheral Subunit-Binding Domain (PSBD) (mature residues 270–307) is completely free in all predictions** — zero contacts in every model, suggesting compatibility with intact PDC assembly during Mediator engagement
 3. **Trimer modeling dramatically improves interaction confidence** — ipTM increases from 0.148→0.412 (MED1 domain) and 0.344→0.505 (LXXLL), demonstrating that quaternary assembly creates emergent interaction surfaces absent in the isolated monomer
 4. **The MED1 LXXLL coactivator recruitment region is the preferred contact** — with both LXXLL motifs engaged simultaneously by two adjacent DLAT subunits in the trimer run, consistent with canonical coactivator LXXLL motif engagement
 
@@ -56,18 +56,15 @@ DLAT-MED1-AlphaFold-Multimer/
 │
 ├── sequences/
 │   └── input_sequences.txt              # FASTA sequences used for ColabFold input
-│
-└── report/
-    └── DLAT_MED1_Report_v4.pdf          # Full written report
-```
 
+```
 ---
 
 ## Methods
 
 ### Proteins studied
 
-**DLAT** (Dihydrolipoamide acetyltransferase, E2 subunit of PDC)
+**DLAT** (Dihydrolipoamide acetyltransferase, E2 subunit of PDH)
 - UniProt: [P10515](https://www.uniprot.org/uniprotkb/P10515)
 - Mature sequence used: residues 87–647 (561 amino acids, mitochondrial targeting sequence excluded)
 - Domain architecture: Lipoyl domain 1 (1–90) · Linker (91–131) · Lipoyl domain 2 (132–208) · Inter-domain linker (209–269) · PSBD (270–307) · PSBD-AT linker (308–333) · Acetyltransferase domain (334–561)
@@ -147,10 +144,10 @@ PAE (Predicted Aligned Error) plots from all four runs. The inter-chain quadrant
 
 ## Limitations
 
-- The co-immunoprecipitation data of Russo et al. (2024) reflects whole-complex association in native macrophage lysate; direct binary interaction between isolated DLAT subunits and MED1 fragments has not been experimentally confirmed
-- AlphaFold-Multimer detects interactions primarily through co-evolutionary signal; moonlighting metabolic–transcriptional interactions may be underrepresented in co-evolutionary databases
+- The co-immunoprecipitation data of Russo et al. (2024) reflects whole-complex association in native macrophage lysate, direct binary interaction between isolated DLAT subunits and MED1 fragments has not been experimentally confirmed
+- AlphaFold-Multimer detects interactions primarily through co-evolutionary signal, moonlighting metabolic–transcriptional interactions may be underrepresented in co-evolutionary databases
 - Full-length MED1 (1582 aa) could not be modeled due to GPU memory constraints (~80–100 GB required for DLAT trimer + full MED1)
-- The full PDC 60-mer context — which determines which acetyltransferase surfaces are exposed vs buried — was computationally infeasible; trimer modeling partially addresses this limitation
+- The full PDC 60-mer context, which determines which acetyltransferase surfaces are exposed vs buried, was computationally infeasible; trimer modeling partially addresses this limitation
 - All predictions require experimental validation
 
 ---
